@@ -1,14 +1,20 @@
+// FUNCTION GETALLCOUNTRIES
 function getAllCountries() {
-    $("#ShowData").click(function () {
+    $("#btnShowData").click(function () {
         $.ajax({
             url: `https://restcountries.com/v3.1/all`,
-            success: function (data) {
+            success: function (data) {                             
                 let countriesNames = data.map((country)=> {
-                    console.log (country);
-                    return `<li>
-                    <ul><li> Pays: ${country.name.common}</li><li>Capitale: ${country.capital}</li><li>Continent: ${country.continents}</li><li></li>Monnaie:</ul></li>`
-                });
-                $("#countriesList").html(countriesNames.join(""));
+                return `<li><h3>${country.name.common}</h3></li>
+                            <ul class="infos">
+                                <li>Capitale : ${country.capital}</li>
+                                <li>Continent : ${country.continents}</li>                            
+                                <li>Langue(s) : </li>                       
+                                <li>Monnaie(s) : </li>                       
+                            </ul>`
+                }); 
+                             
+                $("#countriesList").css("list-style-type","none").html(countriesNames.join(""));    
             },
         });
     });
