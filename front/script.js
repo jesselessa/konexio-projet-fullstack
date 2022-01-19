@@ -6,7 +6,7 @@ function getAllCountries() {
                 let countriesNames = data.map((country)=> {
                     console.log (country);
                     return `<li>
-                    <ul><li> Pays: ${country.name.common}</li><li>Capitale: ${country.capital}</li><li>Continent: ${country.continent}</li><li></li>Monnaie:</ul></li>`
+                    <ul><li> Pays: ${country.name.common}</li><li>Capitale: ${country.capital}</li><li>Continent: ${country.continents}</li><li></li>Monnaie:</ul></li>`
                 });
                 $("#countriesList").html(countriesNames.join(""));
             },
