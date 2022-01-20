@@ -3,4 +3,17 @@
     list-style-type: square;
 }
 
+/* Radio buttons */
+/* .radioButtons{
+    display: flex;
+} */
 
+/* // $(document).ready(() => {
+    //     // Font-size et font-family par défaut
+    //     $("html").css("font-size","62.5%")
+    //     $("body").css({"font-family": "Arial", "font-size" : "1.6rem"});
+    //     // Formulaire
+    //     $("label").css("font-weight", "bold")
+    //     // Titres pays
+    //     $("h3").css({"margin-bottom": "1rem"}); */
+    
