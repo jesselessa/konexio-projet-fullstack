@@ -2,25 +2,24 @@
 
 // On va écrire notre code sous forme de fonction call-back de façon à s'assurer qu'il s'exécute une fois que nos scripts JS seront chargés
 
-// getAllCountries();
-
-// });
-
 $().ready(() => {
-    // Fonction pour afficher le spinner
-    function showSpinner() {
-        $("#countriesList").append(`<div class="spinner-border" role="status">
-<span class="visually-hidden">Loading...</span>
-</div>`)
-   }
+    
+
+// Fonction pour afficher le spinner
+function showSpinner() {
+    $("#countriesList").append(`<div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div>`)
+}
     
 // Fonction pour cacher le spinner
 function hideSpinner() {
     $(".spinner-border").remove()
 }
-    // Fonction pour réinitialiser la page
-    function reset() {
+
+// Fonction pour réinitialiser la page
+function reset() {
+    
         $("li").remove()
+
         showSpinner()
         
         $.ajax({
@@ -33,35 +32,20 @@ function hideSpinner() {
                     )
                 });
             }
-        })
-
-        $.ajax({
-                url: `https://restcountries.com/v3.1/all`,
-                success: function (data){                             
-                let countries = data.map((country)=> {                    
-                    return `<li><h3>${country.name.common}</h3></li>
-                                            <ul class="infos">
-                                                <li>Capitale : ${country.capital}</li>
-                                                <li>Continent : ${country.continents}</li>                            
-                                                <li>Langue : </li>                       
-                                                <li>Monnaie : </li>                       
-                                            </ul>`
-                            }).then(() => {
+        }).then(() => {
             hideSpinner();
         })}
-
-    })};
-
-    // Appel de la fonction d'ouverture de la page à chaque affichage
+       
+// Appel de la fonction d'ouverture de la page à chaque affichage
     reset()
 
-    //Boutton de réinitialisation de l'affichage
+//Boutton de réinitialisation de l'affichage
     $("#btnReset").click(() => {
         reset()
     })
 
-    // Function getAllCountries
-    function getAllCountries() {
+// Function getAllCountries
+function getAllCountries() {
         $("li").remove();
 
         showSpinner();
@@ -77,7 +61,7 @@ function hideSpinner() {
         }
 
         $.ajax({
-            // Importation de l'API rescountries
+            // Importation de l'API REST Countries
             url: url + $("#countryForm").val(),
             success: function(countries) {
                 countries.forEach(country => {
@@ -85,7 +69,7 @@ function hideSpinner() {
                     $("#countriesList").append(
                         `<li class="list-group-item"><p>Name : ${country.name.common}<br />Capital : ${country.capital} <br />Continent : ${country.region}</p></li>`
                     )
-                    console.log(country.name.common)
+                    // console.log(country.name.common)
                 });
             },
         }).then(() => {
@@ -93,7 +77,7 @@ function hideSpinner() {
         })
     };
 
-// Appel de la fonction getAllCountries à chaque "clic" sur le bouton ShowData 
+    // Appel de la fonction getAllCountries à chaque "clic" sur le bouton ShowData 
     $("#btnShowData").click(() => {
         getAllCountries();
     })
